@@ -7,18 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DCE2C4C42B41B53400DFFC7E /* Motorcycleapp2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4C32B41B53400DFFC7E /* Motorcycleapp2App.swift */; };
-		DCE2C4C62B41B53400DFFC7E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4C52B41B53400DFFC7E /* ContentView.swift */; };
+		DCE2C4C42B41B53400DFFC7E /* MotorcycleApp2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4C32B41B53400DFFC7E /* MotorcycleApp2.swift */; };
 		DCE2C4C82B41B53700DFFC7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE2C4C72B41B53700DFFC7E /* Assets.xcassets */; };
 		DCE2C4CB2B41B53700DFFC7E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE2C4CA2B41B53700DFFC7E /* Preview Assets.xcassets */; };
+		DCE2C4D22B41B6ED00DFFC7E /* Motorcycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4D12B41B6ED00DFFC7E /* Motorcycle.swift */; };
+		DCE2C4D42B41B78900DFFC7E /* motorcycles.json in Resources */ = {isa = PBXBuildFile; fileRef = DCE2C4D32B41B78900DFFC7E /* motorcycles.json */; };
+		DCE2C4D62B41C06A00DFFC7E /* MotorcycleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4D52B41C06A00DFFC7E /* MotorcycleListView.swift */; };
+		DCE2C4DA2B41D15B00DFFC7E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4D92B41D15B00DFFC7E /* DataLoader.swift */; };
+		DCE2C4DC2B41D27200DFFC7E /* MotorcycleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4DB2B41D27200DFFC7E /* MotorcycleDetailView.swift */; };
+		DCE2C4DE2B41D72E00DFFC7E /* BrandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4DD2B41D72E00DFFC7E /* BrandListView.swift */; };
+		DCE2C4E02B41D75000DFFC7E /* BrandModelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE2C4DF2B41D75000DFFC7E /* BrandModelsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DCE2C4C02B41B53400DFFC7E /* Motorcycleapp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motorcycleapp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCE2C4C32B41B53400DFFC7E /* Motorcycleapp2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motorcycleapp2App.swift; sourceTree = "<group>"; };
-		DCE2C4C52B41B53400DFFC7E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DCE2C4C32B41B53400DFFC7E /* MotorcycleApp2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleApp2.swift; sourceTree = "<group>"; };
 		DCE2C4C72B41B53700DFFC7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCE2C4CA2B41B53700DFFC7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DCE2C4D12B41B6ED00DFFC7E /* Motorcycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motorcycle.swift; sourceTree = "<group>"; };
+		DCE2C4D32B41B78900DFFC7E /* motorcycles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = motorcycles.json; sourceTree = "<group>"; };
+		DCE2C4D52B41C06A00DFFC7E /* MotorcycleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleListView.swift; sourceTree = "<group>"; };
+		DCE2C4D92B41D15B00DFFC7E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		DCE2C4DB2B41D27200DFFC7E /* MotorcycleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleDetailView.swift; sourceTree = "<group>"; };
+		DCE2C4DD2B41D72E00DFFC7E /* BrandListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListView.swift; sourceTree = "<group>"; };
+		DCE2C4DF2B41D75000DFFC7E /* BrandModelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandModelsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +63,16 @@
 		DCE2C4C22B41B53400DFFC7E /* Motorcycleapp2 */ = {
 			isa = PBXGroup;
 			children = (
-				DCE2C4C32B41B53400DFFC7E /* Motorcycleapp2App.swift */,
-				DCE2C4C52B41B53400DFFC7E /* ContentView.swift */,
+				DCE2C4D32B41B78900DFFC7E /* motorcycles.json */,
+				DCE2C4C32B41B53400DFFC7E /* MotorcycleApp2.swift */,
+				DCE2C4DD2B41D72E00DFFC7E /* BrandListView.swift */,
+				DCE2C4DF2B41D75000DFFC7E /* BrandModelsView.swift */,
+				DCE2C4DB2B41D27200DFFC7E /* MotorcycleDetailView.swift */,
+				DCE2C4D12B41B6ED00DFFC7E /* Motorcycle.swift */,
+				DCE2C4D92B41D15B00DFFC7E /* DataLoader.swift */,
 				DCE2C4C72B41B53700DFFC7E /* Assets.xcassets */,
 				DCE2C4C92B41B53700DFFC7E /* Preview Content */,
+				DCE2C4D52B41C06A00DFFC7E /* MotorcycleListView.swift */,
 			);
 			path = Motorcycleapp2;
 			sourceTree = "<group>";
@@ -126,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCE2C4CB2B41B53700DFFC7E /* Preview Assets.xcassets in Resources */,
+				DCE2C4D42B41B78900DFFC7E /* motorcycles.json in Resources */,
 				DCE2C4C82B41B53700DFFC7E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +156,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCE2C4C62B41B53400DFFC7E /* ContentView.swift in Sources */,
-				DCE2C4C42B41B53400DFFC7E /* Motorcycleapp2App.swift in Sources */,
+				DCE2C4DC2B41D27200DFFC7E /* MotorcycleDetailView.swift in Sources */,
+				DCE2C4DA2B41D15B00DFFC7E /* DataLoader.swift in Sources */,
+				DCE2C4D22B41B6ED00DFFC7E /* Motorcycle.swift in Sources */,
+				DCE2C4C42B41B53400DFFC7E /* MotorcycleApp2.swift in Sources */,
+				DCE2C4DE2B41D72E00DFFC7E /* BrandListView.swift in Sources */,
+				DCE2C4D62B41C06A00DFFC7E /* MotorcycleListView.swift in Sources */,
+				DCE2C4E02B41D75000DFFC7E /* BrandModelsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
