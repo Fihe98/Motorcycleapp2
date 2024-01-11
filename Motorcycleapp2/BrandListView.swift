@@ -18,7 +18,7 @@ struct BrandListView: View {
     var body: some View {
         NavigationView {
             List(groupedMotorcycles.keys.sorted(), id: \.self) { brand in
-                NavigationLink(destination: BrandModelsView(brand: brand, models: groupedMotorcycles[brand] ?? [])) {
+                NavigationLink(destination: CategoryView(brand: brand, motorcycles: groupedMotorcycles[brand] ?? [])) {
                     Text(brand)
                 }
             }
@@ -26,5 +26,3 @@ struct BrandListView: View {
         }
     }
 }
-
-

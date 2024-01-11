@@ -19,7 +19,7 @@ struct MotorcycleApp2: App {
 
     var body: some Scene {
         WindowGroup {
-            BrandListView(allMotorcycles: motorcycles, selectedBrands: ["honda", "yamaha"])
+            BrandListView(allMotorcycles: motorcycles, selectedBrands: ["honda", "yamaha", "ducati", "bmw"])
 
         }
     }
