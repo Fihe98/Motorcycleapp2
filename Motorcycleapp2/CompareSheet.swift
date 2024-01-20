@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct CompareSheet: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    var action: (Motorcycle) -> Void
 
-#Preview {
-    CompareSheet()
+    var body: some View {
+        BrandListView(selectedBrands: ["aprilia", "honda", "yamaha", "ducati", "bmw", "kawasaki", "suzuki", "triumph", "harley-davidson"], isCompareSheet: true, action: action)
+    }
 }

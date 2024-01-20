@@ -15,11 +15,11 @@ func groupMotorcyclesByBrand(motorcycles: [Motorcycle], selectedBrands: [String]
 
 @main
 struct MotorcycleApp2: App {
-    let motorcycles = decodeJSON()
-
     var body: some Scene {
         WindowGroup {
-            BrandListView(allMotorcycles: motorcycles, selectedBrands: ["honda", "yamaha", "ducati", "bmw"])
+            BrandListView(selectedBrands: ["aprilia", "honda", "yamaha", "ducati", "bmw", "kawasaki", "suzuki", "triumph", "harley-davidson", "indian"], isCompareSheet: false) { motorcycle in
+                // Do nothing
+            }
 
         }
     }

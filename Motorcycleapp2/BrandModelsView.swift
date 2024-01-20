@@ -12,6 +12,8 @@ struct BrandModelsView: View {
     let brand: String
     let category: String?
     let models: [Motorcycle]
+    var isCompareSheet: Bool
+    var action: (Motorcycle) -> Void
 
     @State private var searchText = ""
 
@@ -36,8 +38,8 @@ struct BrandModelsView: View {
 
     var body: some View {
             List {
-                ForEach(uniqueModels) { motorcycle in
-                    NavigationLink(destination: ModelYearsView(brand: motorcycle.brand ?? "", model: motorcycle.model ?? "", motorcycles: models)) {
+                ForEach(searchResults) { motorcycle in
+                    NavigationLink(destination: ModelYearsView(brand: motorcycle.brand ?? "", model: motorcycle.model ?? "", motorcycles: models, isCompareSheet: isCompareSheet, action: action)) {
                         VStack(alignment: .leading) {
                             Text("\(motorcycle.brandModel)")
                                 .font(.headline)
@@ -45,7 +47,17 @@ struct BrandModelsView: View {
                     }
                 }
             }
-            .searchable(text: $searchText)
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
             .navigationTitle("\(brand) \(category ?? "")")
+    }
+    
+    var searchResults: [Motorcycle] {
+        if searchText.isEmpty {
+            return uniqueModels
+        } else {
+            return uniqueModels.filter { $0.brandModel.localizedCaseInsensitiveContains(searchText) }
+        }
     }
 }

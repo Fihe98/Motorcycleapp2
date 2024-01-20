@@ -10,6 +10,8 @@ import SwiftUI
 struct CategoryView: View {
     let brand: String
     let motorcycles: [Motorcycle]
+    var isCompareSheet: Bool
+    var action: (Motorcycle) -> Void
 
     var body: some View {
         
@@ -17,7 +19,7 @@ struct CategoryView: View {
             .sorted()
 
             List(categories, id: \.self) { category in
-                NavigationLink(destination: BrandModelsView(brand: brand, category: category, models: motorcycles)) {
+                NavigationLink(destination: BrandModelsView(brand: brand, category: category, models: motorcycles, isCompareSheet: isCompareSheet, action: action)) {
                     Text(category)
                 }
             }

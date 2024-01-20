@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Motorcycle: Identifiable, Decodable {
+struct Motorcycle: Identifiable, Decodable, Hashable {
     var id: UUID = UUID()
     var brand: String?
     var model: String?
