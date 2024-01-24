@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct CompareSheet: View {
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject private var dataManager = MotorcycleDataManager.shared
     var action: (Motorcycle) -> Void
 
     var body: some View {
-        BrandListView(selectedBrands: ["aprilia", "honda", "yamaha", "ducati", "bmw", "kawasaki", "suzuki", "triumph", "harley-davidson"], isCompareSheet: true, action: action)
+        NavigationView {
+            BrandListView(isCompareSheet: true, action: action)
+            }
+        }
     }
-}

@@ -8,29 +8,37 @@
 import SwiftUI
 
 struct BrandListView: View {
-    
+    @ObservedObject private var viewModel = BrandListViewModel()
+    @ObservedObject private var dataManager = MotorcycleDataManager.shared
     @State private var allMotorcycles: [Motorcycle] = []
-    let selectedBrands: [String]
     var isCompareSheet: Bool
     var action: (Motorcycle) -> Void
-
-    var groupedMotorcycles: [String: [Motorcycle]] {
-        groupMotorcyclesByBrand(motorcycles: dataManager.allMotorcycles, selectedBrands: selectedBrands)
-    }
     
     var body: some View {
         NavigationView {
-            List(groupedMotorcycles.keys.sorted(), id: \.self) { brand in
-                NavigationLink(destination: CategoryView(brand: brand, motorcycles: groupedMotorcycles[brand] ?? [], isCompareSheet: isCompareSheet, action: action)) {
-                    BrandImageButton(brand: brand)
+            List(viewModel.sortedBrands(), id: \.self) { brand in
+                NavigationLink(destination: CategoryView(brand: brand, motorcycles: viewModel.dataManager.motorcyclesByBrand[brand] ?? [], isCompareSheet: isCompareSheet, action: action)) {
+                    HStack {
+                        Spacer()
+                        BrandImageButton(brand: brand)
+                            .padding(5)
+                        Spacer()
+                    }
                 }
+                .listRowBackground(Color.clear)
+                .listRowSeparatorTint(.clear)
             }
-            .navigationTitle("Brands")
+            .listStyle(DefaultListStyle())
+            .padding(.top, 20)
+            .padding(.bottom, 20)
+            .background(LinearGradient(
+                gradient: Gradient(colors: [Color(red: 11/255, green: 24/255, blue: 56/255), Color(red: 1/255, green: 1/255, blue: 26/255)]),
+                startPoint: .top,
+                endPoint: .bottom
+            ))
+            .scrollContentBackground(.hidden)
         }
-        .onAppear {
-            // Load data on app startup
-            allMotorcycles = decodeJSON()
-        }
+        .accentColor(.white)
     }
 }
 
@@ -39,14 +47,11 @@ struct BrandImageButton: View {
 
     var body: some View {
         Button(action: {
-            // Handle button action if needed
         }) {
             Image(brand.lowercased())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 50, height: 50)
-                .padding(10)
-                .background(Color.white)
+                .frame(width: 100, height: 100)
                 .cornerRadius(8)
         }
     }
@@ -54,6 +59,6 @@ struct BrandImageButton: View {
 
 struct BrandListView_Previews: PreviewProvider {
     static var previews: some View {
-        return BrandListView(selectedBrands: ["honda", "yamaha", "ducati", "bmw"], isCompareSheet: false) { motorcycles in }
+        return BrandListView(isCompareSheet: false) { motorcycles in }
     }
 }

@@ -1,16 +1,10 @@
-//
-//  MotorcycleDetailView.swift
-//  Motorcycleapp2
-//
-//  Created by Filip Henriksson on 2023-12-31.
-//
-
 import SwiftUI
 
 struct MotorcycleDetailView: View {
+    @ObservedObject private var dataManager = MotorcycleDataManager.shared
     @State private var isBottomSheetPresented = false
     @State var motorcycles: [Motorcycle]
-    
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 300))], spacing: 16) {
@@ -20,7 +14,15 @@ struct MotorcycleDetailView: View {
             }
             .padding()
         }
-        .background(Color.gray.opacity(0.1))
+        .padding(.bottom, 20)
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [Color(red: 11/255, green: 24/255, blue: 56/255), Color(red: 1/255, green: 1/255, blue: 26/255)]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.all)
+        )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Compare") {
@@ -40,22 +42,21 @@ struct MotorcycleDetailView: View {
 
 struct MotorcycleCardView: View {
     var motorcycle: Motorcycle
-    
+
     @State private var isGeneralInfoExpanded = false
     @State private var isEngineDetailsExpanded = false
     @State private var isWeightDimensionsExpanded = false
     @State private var isOtherDetailsExpanded = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text("\(motorcycle.brandModel)")
                     .font(.title)
-                    .fontWeight(.bold)
                 Spacer()
             }
             .padding(.bottom, 8)
-            
+
             DisclosureGroup(isExpanded: $isGeneralInfoExpanded) {
                 Text("Year: \(motorcycle.year ?? "No model year specified")")
                     .styledText()
@@ -64,7 +65,9 @@ struct MotorcycleCardView: View {
             } label: {
                 GroupTitle(title: "General Information")
             }
-            
+            Divider()
+                .background(.white)
+
             DisclosureGroup(isExpanded: $isEngineDetailsExpanded) {
                 Text("Displacement: \(motorcycle.displacementCcm ?? "Unknown Displacement")")
                     .styledText()
@@ -85,7 +88,9 @@ struct MotorcycleCardView: View {
             } label: {
                 GroupTitle(title: "Engine Details")
             }
-            
+            Divider()
+                .background(.white)
+
             DisclosureGroup(isExpanded: $isWeightDimensionsExpanded) {
                 Text("Dry Weight (kg): \(motorcycle.dryWeightKg ?? "Unknown dry weight")")
                     .styledText()
@@ -96,6 +101,8 @@ struct MotorcycleCardView: View {
             } label: {
                 GroupTitle(title: "Weight and Dimensions")
             }
+            Divider()
+                .background(.white)
             
             DisclosureGroup(isExpanded: $isOtherDetailsExpanded) {
                 Text("Fuel Capacity (lts): \(motorcycle.fuelCapacityLts ?? "Unknown Fuel Capacity")")
@@ -125,21 +132,23 @@ struct MotorcycleCardView: View {
             }
         }
         .padding()
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 4)
+        .background(Color.clear)
+        .foregroundColor(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.white, lineWidth: 0.5)
+        )
     }
 }
 
 struct GroupTitle: View {
     var title: String
-    
+
     var body: some View {
         HStack {
             Text(title)
                 .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
             Spacer()
         }
@@ -150,8 +159,9 @@ extension Text {
     func styledText() -> some View {
         self
             .font(.body)
-            .foregroundColor(.black)
+            .foregroundColor(.white)
             .padding(.vertical, 2)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
+

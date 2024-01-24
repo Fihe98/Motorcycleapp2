@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct BrandModelsView: View {
+    @ObservedObject private var dataManager = MotorcycleDataManager.shared
     let brand: String
     let category: String?
     let models: [Motorcycle]
@@ -37,22 +38,32 @@ struct BrandModelsView: View {
     }
 
     var body: some View {
-            List {
-                ForEach(searchResults) { motorcycle in
-                    NavigationLink(destination: ModelYearsView(brand: motorcycle.brand ?? "", model: motorcycle.model ?? "", motorcycles: models, isCompareSheet: isCompareSheet, action: action)) {
-                        VStack(alignment: .leading) {
-                            Text("\(motorcycle.brandModel)")
-                                .font(.headline)
-                        }
+        List {
+            ForEach(searchResults) { motorcycle in
+                NavigationLink(destination: ModelYearsView(brand: motorcycle.brand ?? "", model: motorcycle.model ?? "", motorcycles: models, isCompareSheet: isCompareSheet, action: action)) {
+                    VStack(alignment: .leading) {
+                        Text("\(motorcycle.brandModel)")
                     }
                 }
+                .listRowBackground(Color.clear)
+                .listRowSeparatorTint(.white)
+                .foregroundColor(.white)
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-            .autocorrectionDisabled()
-            .textInputAutocapitalization(.never)
-            .navigationTitle("\(brand) \(category ?? "")")
+        }
+        .padding(.bottom, 20)
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .autocorrectionDisabled()
+        .textInputAutocapitalization(.never)
+        .background(LinearGradient(
+            gradient: Gradient(colors: [Color(red: 11/255, green: 24/255, blue: 56/255), Color(red: 1/255, green: 1/255, blue: 26/255)]),
+            startPoint: .top,
+            endPoint: .bottom
+        ))
+        .foregroundColor(.white)
+        .listStyle(DefaultListStyle())
+        .scrollContentBackground(.hidden)
     }
-    
+
     var searchResults: [Motorcycle] {
         if searchText.isEmpty {
             return uniqueModels
